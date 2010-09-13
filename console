@@ -1,0 +1,2602 @@
+Script started on Fri 10 Sep 2010 20:55:43 EST
+]0;rufus@rufus-laptop: ~/Projects/rails/sorterrufus@rufus-laptop:~/Projects/rails/sorter$ exitrails server[1P server[1P server[1P server[1P server[1P serverr servera serveri serverl servere server
+No command 'raile' found, did you mean:
+ Command 'rfile' from package 'radare-common' (universe)
+ Command 'rails' from package 'rails' (universe)
+raile: command not found
+]0;rufus@rufus-laptop: ~/Projects/rails/sorterrufus@rufus-laptop:~/Projects/rails/sorter$ raile server[1P servers server
+=> Booting WEBrick
+=> Rails 3.0.0 application starting in development on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+You did not specify how you would like Rails to report deprecation notices for your development environment, please set config.active_support.deprecation to :log at config/environments/development.rb
+[2010-09-10 20:55:59] INFO  WEBrick 1.3.1
+[2010-09-10 20:55:59] INFO  ruby 1.9.2 (2010-08-18) [x86_64-linux]
+[2010-09-10 20:55:59] INFO  WEBrick::HTTPServer#start: pid=16096 port=3000
+^C[2010-09-10 20:55:59] INFO  going to shutdown ...
+[2010-09-10 20:55:59] INFO  WEBrick::HTTPServer#start done.
+Exiting
+]0;rufus@rufus-laptop: ~/Projects/rails/sorterrufus@rufus-laptop:~/Projects/rails/sorter$ rails server[K[K[K[K[K[Kconsole
+You did not specify how you would like Rails to report deprecation notices for your development environment, please set config.active_support.deprecation to :log at config/environments/development.rb
+Loading development environment (Rails 3.0.0)
+>> User.al[K[Kcount
+=> 4001
+>> Unw[K[K[KUser.first
+=> #<User id: 1, name: "Hunter Hilll", email: "scot@hotmail.com", phone: "(902)733-3068", created_at: "2010-07-25 06:17:02", updated_at: "2010-07-25 06:17:02">
+>> User.where(:id => 1).co[K[Ksorted(:order ->[K[K-[K=> 'email DESC')
+=> [#<User id: 1, name: "Hunter Hilll", email: "scot@hotmail.com", phone: "(902)733-3068", created_at: "2010-07-25 06:17:02", updated_at: "2010-07-25 06:17:02">]
+>> exit
+]0;rufus@rufus-laptop: ~/Projects/rails/sorterrufus@rufus-laptop:~/Projects/rails/sorter$ rails console[1Pserver
+=> Booting WEBrick
+=> Rails 3.0.0 application starting in development on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+You did not specify how you would like Rails to report deprecation notices for your development environment, please set config.active_support.deprecation to :log at config/environments/development.rb
+[2010-09-10 21:07:00] INFO  WEBrick 1.3.1
+[2010-09-10 21:07:00] INFO  ruby 1.9.2 (2010-08-18) [x86_64-linux]
+[2010-09-10 21:07:00] INFO  WEBrick::HTTPServer#start: pid=16364 port=3000
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:07:07 +1000
+  Processing by UsersController#index as HTML
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (24.8ms)
+Completed 200 OK in 51ms (Views: 32.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:07:09 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (45.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 75ms (Views: 16.8ms | ActiveRecord: 45.5ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:07:16 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 49ms (Views: 17.3ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:07:19 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.9ms)
+Completed 200 OK in 78ms (Views: 49.1ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:22 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 45ms (Views: 16.6ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:24 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[35mUser Load (18.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 78ms (Views: 17.0ms | ActiveRecord: 18.6ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:25 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 45ms (Views: 16.7ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:26 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 46ms (Views: 16.9ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:27 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (15.7ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (52.2ms)
+Completed 200 OK in 88ms (Views: 56.1ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:07:28 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 46ms (Views: 17.4ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:07:29 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.8ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 48ms (Views: 17.6ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:07:31 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[35mUser Load (42.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (103.0ms)
+Completed 200 OK in 173ms (Views: 106.3ms | ActiveRecord: 42.8ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:34 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 45ms (Views: 16.2ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:35 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[35mUser Load (15.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 77ms (Views: 16.7ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/users?sort=email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:07:37 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_desc"}
+  [1m[35mUser Load (15.9ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (49.0ms)
+Completed 200 OK in 81ms (Views: 52.1ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/users?sort=email_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:07:37 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_asc!name_desc"}
+  [1m[35mUser Load (35.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (29.4ms)
+Completed 200 OK in 101ms (Views: 37.3ms | ActiveRecord: 35.9ms)
+
+
+Started GET "/users?sort=email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:07:38 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_desc"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 80ms (Views: 17.2ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/users?sort=email_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:07:39 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_asc!name_desc"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 45ms (Views: 16.1ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:07:40 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_desc"}
+  [1m[35mUser Load (18.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 48ms (Views: 16.3ms | ActiveRecord: 18.9ms)
+
+
+Started GET "/users?sort=email_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:07:40 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_asc!name_desc"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.8ms)
+Completed 200 OK in 78ms (Views: 49.1ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc" for 127.0.0.1 at 2010-09-10 21:07:42 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_asc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 46ms (Views: 17.2ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:07:42 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 53ms (Views: 23.1ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:43 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[35mUser Load (16.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.8ms)
+Completed 200 OK in 78ms (Views: 48.9ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:07:45 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 46ms (Views: 16.8ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:47 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 81ms (Views: 17.2ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:50 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 45ms (Views: 16.8ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc" for 127.0.0.1 at 2010-09-10 21:07:51 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_asc"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 45ms (Views: 16.1ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:07:55 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (15.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 78ms (Views: 16.3ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc" for 127.0.0.1 at 2010-09-10 21:07:57 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_asc"}
+  [1m[35mUser Load (15.9ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 47ms (Views: 16.7ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:08:00 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (17.7ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (16.2ms)
+Completed 200 OK in 54ms (Views: 19.9ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:03 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (47.4ms)
+Completed 200 OK in 79ms (Views: 50.5ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:08:04 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (15.2ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 44ms (Views: 15.9ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:06 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 46ms (Views: 16.9ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:08:08 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (15.3ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.5ms)
+Completed 200 OK in 77ms (Views: 48.7ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:09 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.9ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 46ms (Views: 16.1ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/users?sort=phone_asc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:16 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"phone_asc!email_asc!name_asc"}
+  [1m[35mUser Load (16.4ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 79ms (Views: 16.7ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/users?sort=email_asc%21phone_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:18 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!phone_asc!name_asc"}
+  [1m[35mUser Load (16.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, phone ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 47ms (Views: 16.8ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/users?sort=phone_asc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:19 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"phone_asc!email_asc!name_asc"}
+  [1m[35mUser Load (16.2ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 45ms (Views: 15.8ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/users?sort=created_at_asc%21phone_asc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:21 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"created_at_asc!phone_asc!email_asc!name_asc"}
+  [1m[35mUser Load (21.1ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at ASC, phone ASC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (15.8ms)
+Completed 200 OK in 89ms (Views: 18.9ms | ActiveRecord: 21.8ms)
+
+
+Started GET "/users?sort=created_at_desc%21phone_asc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:21 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"created_at_desc!phone_asc!email_asc!name_asc"}
+  [1m[35mUser Load (41.4ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at DESC, phone ASC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 70ms (Views: 16.3ms | ActiveRecord: 41.8ms)
+
+
+Started GET "/users?sort=phone_asc%21created_at_desc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:23 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!created_at_desc!email_asc!name_asc"}
+  [1m[35mUser Load (39.4ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 70ms (Views: 16.7ms | ActiveRecord: 39.8ms)
+
+
+Started GET "/users?sort=created_at_desc%21phone_asc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:25 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"created_at_desc!phone_asc!email_asc!name_asc"}
+  [1m[35mUser Load (41.6ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at DESC, phone ASC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.3ms)
+Completed 200 OK in 104ms (Views: 49.4ms | ActiveRecord: 42.1ms)
+
+
+Started GET "/users?sort=phone_asc%21created_at_desc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:27 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!created_at_desc!email_asc!name_asc"}
+  [1m[35mUser Load (41.1ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 70ms (Views: 16.2ms | ActiveRecord: 41.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:08:31 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.6ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 35ms (Views: 17.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:08:32 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (45.7ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 106ms (Views: 16.1ms | ActiveRecord: 46.1ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:33 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (16.0ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 47ms (Views: 17.0ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:08:35 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 45ms (Views: 16.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:08:36 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (16.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (47.9ms)
+Completed 200 OK in 80ms (Views: 51.1ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:08:47 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 34ms (Views: 16.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:08:49 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (43.7ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 73ms (Views: 16.3ms | ActiveRecord: 44.1ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:08:50 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (44.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 107ms (Views: 15.9ms | ActiveRecord: 45.0ms)
+
+
+Started GET "/users?sort=email_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:51 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_asc!name_desc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 74ms (Views: 45.4ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:52 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_desc!name_desc"}
+  [1m[35mUser Load (15.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 44ms (Views: 15.6ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/users?sort=phone_asc%21email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:53 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"phone_asc!email_desc!name_desc"}
+  [1m[35mUser Load (16.5ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 47ms (Views: 17.1ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/users?sort=phone_desc%21email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:54 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"phone_desc!email_desc!name_desc"}
+  [1m[35mUser Load (15.8ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (44.2ms)
+Completed 200 OK in 76ms (Views: 47.5ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/users?sort=phone_asc%21email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:54 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"phone_asc!email_desc!name_desc"}
+  [1m[35mUser Load (16.3ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 46ms (Views: 16.3ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/users?sort=phone_desc%21email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:55 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"phone_desc!email_desc!name_desc"}
+  [1m[35mUser Load (16.2ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 46ms (Views: 16.8ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/users?sort=phone_asc%21email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:55 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"phone_asc!email_desc!name_desc"}
+  [1m[35mUser Load (16.3ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 80ms (Views: 16.8ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/users?sort=created_at_asc%21phone_asc%21email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:56 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"created_at_asc!phone_asc!email_desc!name_desc"}
+  [1m[35mUser Load (16.9ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at ASC, phone ASC, email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.6ms)
+Completed 200 OK in 79ms (Views: 48.7ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/users?sort=created_at_desc%21phone_asc%21email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:57 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"created_at_desc!phone_asc!email_desc!name_desc"}
+  [1m[35mUser Load (42.0ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at DESC, phone ASC, email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 71ms (Views: 16.0ms | ActiveRecord: 42.5ms)
+
+
+Started GET "/users?sort=created_at_asc%21phone_asc%21email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:57 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"created_at_asc!phone_asc!email_desc!name_desc"}
+  [1m[35mUser Load (17.3ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at ASC, phone ASC, email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 48ms (Views: 16.3ms | ActiveRecord: 17.7ms)
+
+
+Started GET "/users?sort=phone_asc%21created_at_asc%21email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:08:59 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"phone_asc!created_at_asc!email_desc!name_desc"}
+  [1m[35mUser Load (39.6ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, created_at ASC, email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.3ms)
+Completed 200 OK in 101ms (Views: 48.3ms | ActiveRecord: 40.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:09:10 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.6ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 33ms (Views: 16.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:09:15 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (43.2ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 73ms (Views: 16.5ms | ActiveRecord: 43.7ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:09:16 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (44.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (47.3ms)
+Completed 200 OK in 108ms (Views: 50.3ms | ActiveRecord: 44.5ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:09:18 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (42.9ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 72ms (Views: 16.4ms | ActiveRecord: 43.3ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:09:19 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (45.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 79ms (Views: 16.0ms | ActiveRecord: 46.1ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:09:19 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (41.9ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (44.7ms)
+Completed 200 OK in 102ms (Views: 47.8ms | ActiveRecord: 42.3ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:09:20 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (44.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 75ms (Views: 16.5ms | ActiveRecord: 45.0ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:09:22 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (75.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 109ms (Views: 16.6ms | ActiveRecord: 76.0ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:09:25 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (43.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 104ms (Views: 16.4ms | ActiveRecord: 43.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:09:27 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (44.1ms)
+Completed 200 OK in 62ms (Views: 47.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:09:29 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (23.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 52ms (Views: 15.8ms | ActiveRecord: 23.7ms)
+
+
+Started GET "/users?sort=email_desc" for 127.0.0.1 at 2010-09-10 21:09:30 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc"}
+  [1m[35mUser Load (42.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 74ms (Views: 16.5ms | ActiveRecord: 43.1ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:09:31 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (22.9ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (44.5ms)
+Completed 200 OK in 84ms (Views: 47.9ms | ActiveRecord: 23.3ms)
+
+
+Started GET "/users?sort=email_desc" for 127.0.0.1 at 2010-09-10 21:09:32 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc"}
+  [1m[35mUser Load (42.8ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 73ms (Views: 15.8ms | ActiveRecord: 43.3ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:09:33 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (24.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 86ms (Views: 16.1ms | ActiveRecord: 24.7ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:09:34 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (16.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 46ms (Views: 16.6ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc" for 127.0.0.1 at 2010-09-10 21:09:34 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_desc!email_asc"}
+  [1m[35mUser Load (19.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 50ms (Views: 15.8ms | ActiveRecord: 19.4ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:09:45 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (15.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 79ms (Views: 17.2ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc" for 127.0.0.1 at 2010-09-10 21:09:47 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_desc!email_asc"}
+  [1m[35mUser Load (16.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 49ms (Views: 15.8ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:09:53 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 48ms (Views: 18.3ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:10:01 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.8ms)
+Completed 200 OK in 78ms (Views: 48.8ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=email_desc%21phone_asc%21created_at_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:10:43 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_desc!phone_asc!created_at_asc!name_desc"}
+  [1m[35mUser Load (19.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, phone ASC, created_at ASC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 48ms (Views: 15.9ms | ActiveRecord: 19.6ms)
+
+
+Started GET "/users?sort=email_asc%21phone_asc%21created_at_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:10:44 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"email_asc!phone_asc!created_at_asc!name_desc"}
+  [1m[35mUser Load (31.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, phone ASC, created_at ASC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 61ms (Views: 16.3ms | ActiveRecord: 31.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:14:30 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 67ms (Views: 16.5ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users?sort=name_asc.js" for 127.0.0.1 at 2010-09-10 21:14:32 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc.js"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.4ms)
+Completed 200 OK in 63ms (Views: 48.5ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users?sort=name_asc.js" for 127.0.0.1 at 2010-09-10 21:14:33 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc.js"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 32ms (Views: 17.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:16:23 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (3.6ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.9ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Completed 406 Not Acceptable in 20ms
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:16:24 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Completed 406 Not Acceptable in 15ms
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:16:47 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 64ms (Views: 16.5ms | ActiveRecord: 9.4ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:16:54 +1000
+  Processing by UsersController#index as */*
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (42.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (42.7ms)
+Completed 200 OK in 125ms (Views: 69.0ms | ActiveRecord: 43.0ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:17:01 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (44.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Completed 406 Not Acceptable in 59ms
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:19:39 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.1ms)
+Completed 200 OK in 67ms (Views: 49.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:19:41 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (44.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 73ms (Views: 15.7ms | ActiveRecord: 44.9ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:19:43 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (44.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 74ms (Views: 15.5ms | ActiveRecord: 45.3ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:19:43 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (44.9ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.6ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 107ms (Views: 16.3ms | ActiveRecord: 45.6ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:19:44 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 44ms (Views: 16.2ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:19:45 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 45ms (Views: 16.7ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:19:51 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 78ms (Views: 16.1ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:19:51 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[35mUser Load (17.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.3ms)
+Completed 200 OK in 80ms (Views: 48.4ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:19:52 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.0ms)
+Completed 200 OK in 30ms (Views: 15.2ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:19:59 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 31ms (Views: 15.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:20:05 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (43.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.0ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 105ms (Views: 16.3ms | ActiveRecord: 44.5ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:20:05 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (44.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 75ms (Views: 17.1ms | ActiveRecord: 45.0ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:20:06 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (46.2ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 76ms (Views: 15.8ms | ActiveRecord: 46.6ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:20:07 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (16.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (49.4ms)
+Completed 200 OK in 82ms (Views: 52.7ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:20:07 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 45ms (Views: 15.7ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:20:07 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (16.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 48ms (Views: 17.1ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:20:07 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[35mUser Load (15.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.8ms)
+Completed 200 OK in 78ms (Views: 49.4ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:20:08 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (17.8ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 52ms (Views: 18.3ms | ActiveRecord: 18.3ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:20:08 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 79ms (Views: 18.1ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:20:08 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (48.1ms)
+Completed 200 OK in 80ms (Views: 51.6ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:20:08 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[35mUser Load (15.7ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 45ms (Views: 15.7ms | ActiveRecord: 16.1ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:20:09 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (19.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (15.2ms)
+Completed 200 OK in 83ms (Views: 18.6ms | ActiveRecord: 19.9ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=5" for 127.0.0.1 at 2010-09-10 21:20:11 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"5"}
+  [1m[35mUser Load (24.1ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 60
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 53ms (Views: 16.2ms | ActiveRecord: 24.5ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=8" for 127.0.0.1 at 2010-09-10 21:20:13 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"8"}
+  [1m[35mUser Load (27.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 105
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 58ms (Views: 16.7ms | ActiveRecord: 27.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:20:18 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.7ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 66ms (Views: 15.7ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:20:50 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (23.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 52ms (Views: 15.6ms | ActiveRecord: 23.8ms)
+
+
+Started GET "/users?sort=email_desc" for 127.0.0.1 at 2010-09-10 21:20:51 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc"}
+  [1m[35mUser Load (42.1ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 73ms (Views: 16.4ms | ActiveRecord: 42.5ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:20:51 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (23.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 94ms (Views: 57.5ms | ActiveRecord: 23.7ms)
+
+
+Started GET "/users?sort=email_desc" for 127.0.0.1 at 2010-09-10 21:20:52 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc"}
+  [1m[35mUser Load (41.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.6ms)
+Completed 200 OK in 73ms (Views: 18.0ms | ActiveRecord: 41.6ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:20:52 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (23.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 53ms (Views: 15.6ms | ActiveRecord: 23.8ms)
+
+
+Started GET "/users?sort=email_desc" for 127.0.0.1 at 2010-09-10 21:20:53 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc"}
+  [1m[35mUser Load (42.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (49.4ms)
+Completed 200 OK in 109ms (Views: 52.6ms | ActiveRecord: 43.1ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:20:53 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (24.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 53ms (Views: 15.8ms | ActiveRecord: 24.6ms)
+
+
+Started GET "/users?sort=email_desc" for 127.0.0.1 at 2010-09-10 21:20:55 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc"}
+  [1m[35mUser Load (43.9ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 109ms (Views: 18.3ms | ActiveRecord: 44.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:22:29 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.6ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 69ms (Views: 18.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:22:30 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (24.1ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (47.4ms)
+Completed 200 OK in 87ms (Views: 50.6ms | ActiveRecord: 24.5ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:22:31 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (34.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (26.8ms)
+Completed 200 OK in 105ms (Views: 36.9ms | ActiveRecord: 35.3ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:22:32 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (18.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 57ms (Views: 21.5ms | ActiveRecord: 19.3ms)
+
+
+Started GET "/users?sort=email_desc" for 127.0.0.1 at 2010-09-10 21:22:35 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc"}
+  [1m[35mUser Load (42.8ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (48.5ms)
+Completed 200 OK in 110ms (Views: 51.8ms | ActiveRecord: 43.3ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:22:36 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (15.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.5ms)
+Completed 200 OK in 47ms (Views: 17.7ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:22:39 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.7ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 32ms (Views: 15.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:22:41 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (23.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 86ms (Views: 17.0ms | ActiveRecord: 24.0ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:22:42 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (16.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 46ms (Views: 17.2ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc" for 127.0.0.1 at 2010-09-10 21:22:43 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_asc"}
+  [1m[35mUser Load (15.9ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 45ms (Views: 15.7ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc" for 127.0.0.1 at 2010-09-10 21:22:43 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.8ms)
+Completed 200 OK in 77ms (Views: 48.9ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:44 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 45ms (Views: 16.0ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=phone_asc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:46 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!email_asc!name_asc"}
+  [1m[35mUser Load (16.0ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 47ms (Views: 16.5ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/users?sort=phone_desc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:46 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!email_asc!name_asc"}
+  [1m[35mUser Load (16.2ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.9ms)
+Completed 200 OK in 78ms (Views: 49.0ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/users?sort=created_at_asc%21phone_desc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:47 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"created_at_asc!phone_desc!email_asc!name_asc"}
+  [1m[35mUser Load (16.6ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at ASC, phone DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.4ms)
+Completed 200 OK in 48ms (Views: 17.6ms | ActiveRecord: 17.1ms)
+
+
+Started GET "/users?sort=created_at_desc%21phone_desc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:48 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"created_at_desc!phone_desc!email_asc!name_asc"}
+  [1m[35mUser Load (43.0ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at DESC, phone DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.1ms)
+Completed 200 OK in 74ms (Views: 17.2ms | ActiveRecord: 43.4ms)
+
+
+Started GET "/users?sort=created_at_asc%21phone_desc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:48 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"created_at_asc!phone_desc!email_asc!name_asc"}
+  [1m[35mUser Load (16.4ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at ASC, phone DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.5ms)
+Completed 200 OK in 79ms (Views: 49.7ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/users?sort=created_at_desc%21phone_desc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:48 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"created_at_desc!phone_desc!email_asc!name_asc"}
+  [1m[35mUser Load (41.5ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at DESC, phone DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 71ms (Views: 16.5ms | ActiveRecord: 42.0ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:49 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc"}
+  [1m[35mUser Load (32.6ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 63ms (Views: 16.4ms | ActiveRecord: 33.0ms)
+
+
+Started GET "/users?sort=phone_asc%21created_at_asc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:49 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!created_at_asc!email_asc!name_asc"}
+  [1m[35mUser Load (38.4ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, created_at ASC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.6ms)
+Completed 200 OK in 102ms (Views: 49.6ms | ActiveRecord: 38.8ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:22:50 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc"}
+  [1m[35mUser Load (30.9ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.3ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 61ms (Views: 16.0ms | ActiveRecord: 32.2ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=2" for 127.0.0.1 at 2010-09-10 21:22:51 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"2"}
+  [1m[35mUser Load (22.3ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 15
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 53ms (Views: 17.1ms | ActiveRecord: 22.7ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=3" for 127.0.0.1 at 2010-09-10 21:22:52 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"3"}
+  [1m[35mUser Load (27.7ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 30
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.8ms)
+Completed 200 OK in 91ms (Views: 50.0ms | ActiveRecord: 28.1ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=4" for 127.0.0.1 at 2010-09-10 21:22:52 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"4"}
+  [1m[35mUser Load (24.4ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 45
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 54ms (Views: 16.6ms | ActiveRecord: 24.8ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=5" for 127.0.0.1 at 2010-09-10 21:22:52 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"5"}
+  [1m[35mUser Load (29.9ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 60
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (15.1ms)
+Completed 200 OK in 64ms (Views: 18.4ms | ActiveRecord: 30.3ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=6" for 127.0.0.1 at 2010-09-10 21:22:52 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"6"}
+  [1m[35mUser Load (25.0ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 75
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.3ms)
+Completed 200 OK in 88ms (Views: 49.3ms | ActiveRecord: 25.4ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=5" for 127.0.0.1 at 2010-09-10 21:22:53 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"5"}
+  [1m[35mUser Load (27.2ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 60
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 57ms (Views: 16.9ms | ActiveRecord: 27.6ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=4" for 127.0.0.1 at 2010-09-10 21:22:53 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"4"}
+  [1m[35mUser Load (24.9ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 45
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 56ms (Views: 17.0ms | ActiveRecord: 25.4ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=3" for 127.0.0.1 at 2010-09-10 21:22:54 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"3"}
+  [1m[35mUser Load (27.9ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 30
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (50.3ms)
+Completed 200 OK in 95ms (Views: 53.4ms | ActiveRecord: 28.4ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=2" for 127.0.0.1 at 2010-09-10 21:22:54 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"2"}
+  [1m[35mUser Load (22.9ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 15
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 54ms (Views: 17.0ms | ActiveRecord: 23.3ms)
+
+
+Started GET "/users?sort=phone_desc%21created_at_desc%21email_asc%21name_asc&page=1" for 127.0.0.1 at 2010-09-10 21:22:54 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!created_at_desc!email_asc!name_asc", "page"=>"1"}
+  [1m[35mUser Load (32.2ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, created_at DESC, email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 63ms (Views: 16.8ms | ActiveRecord: 32.7ms)
+
+
+Started GET "/users?sort=email_asc%21phone_desc%21created_at_desc%21name_asc&page=1" for 127.0.0.1 at 2010-09-10 21:22:57 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!phone_desc!created_at_desc!name_asc", "page"=>"1"}
+  [1m[35mUser Load (31.7ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, phone DESC, created_at DESC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (47.6ms)
+Completed 200 OK in 95ms (Views: 50.7ms | ActiveRecord: 32.1ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:22:58 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (26.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (15.0ms)
+Completed 200 OK in 58ms (Views: 18.1ms | ActiveRecord: 26.8ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:00 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (31.1ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 61ms (Views: 16.3ms | ActiveRecord: 31.5ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:01 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (19.0ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.4ms)
+Completed 200 OK in 81ms (Views: 49.0ms | ActiveRecord: 19.4ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:02 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (26.9ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 57ms (Views: 16.4ms | ActiveRecord: 27.3ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:02 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 56ms (Views: 16.6ms | ActiveRecord: 26.2ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:02 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.3ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.9ms)
+Completed 200 OK in 87ms (Views: 49.1ms | ActiveRecord: 25.7ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:02 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 55ms (Views: 16.4ms | ActiveRecord: 26.0ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:02 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (27.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 58ms (Views: 16.9ms | ActiveRecord: 28.2ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:03 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.2ms)
+Completed 200 OK in 88ms (Views: 49.3ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:03 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (26.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 57ms (Views: 17.3ms | ActiveRecord: 26.9ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:04 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.7ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 57ms (Views: 17.2ms | ActiveRecord: 26.2ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:05 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (26.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.7ms)
+Completed 200 OK in 88ms (Views: 48.7ms | ActiveRecord: 26.5ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:05 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 55ms (Views: 16.1ms | ActiveRecord: 25.9ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:05 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (26.7ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 57ms (Views: 16.4ms | ActiveRecord: 27.1ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:06 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.2ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.8ms)
+Completed 200 OK in 88ms (Views: 50.0ms | ActiveRecord: 25.6ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:06 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (26.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 55ms (Views: 16.4ms | ActiveRecord: 26.5ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:07 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (18.7ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 49ms (Views: 16.6ms | ActiveRecord: 19.2ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:08 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (32.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.3ms)
+Completed 200 OK in 95ms (Views: 49.7ms | ActiveRecord: 32.8ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:08 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (18.8ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 49ms (Views: 16.4ms | ActiveRecord: 19.2ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:08 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (32.0ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.9ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 279ms (Views: 17.6ms | ActiveRecord: 32.8ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:09 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (19.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.9ms)
+Completed 200 OK in 82ms (Views: 49.1ms | ActiveRecord: 19.9ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:10 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (31.8ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 61ms (Views: 16.5ms | ActiveRecord: 32.2ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:11 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 56ms (Views: 16.7ms | ActiveRecord: 26.2ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:11 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (49.6ms)
+Completed 200 OK in 93ms (Views: 52.8ms | ActiveRecord: 26.2ms)
+
+
+Started GET "/users?sort=name_asc%21email_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:12 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (26.7ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 56ms (Views: 16.5ms | ActiveRecord: 27.1ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:12 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (26.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 57ms (Views: 16.7ms | ActiveRecord: 27.1ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:13 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (47.7ms)
+Completed 200 OK in 89ms (Views: 50.8ms | ActiveRecord: 25.5ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:14 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_asc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (26.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email ASC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 56ms (Views: 16.3ms | ActiveRecord: 26.8ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc%21phone_desc%21created_at_desc&page=1" for 127.0.0.1 at 2010-09-10 21:24:15 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc!phone_desc!created_at_desc", "page"=>"1"}
+  [1m[35mUser Load (25.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC, phone DESC, created_at DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 57ms (Views: 17.1ms | ActiveRecord: 26.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:24:16 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.2ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (46.2ms)
+Completed 200 OK in 65ms (Views: 49.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:24:17 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (44.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 75ms (Views: 16.6ms | ActiveRecord: 44.4ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:24:19 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (45.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 74ms (Views: 15.6ms | ActiveRecord: 45.9ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:24:20 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (43.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (2.0ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 103ms (Views: 15.5ms | ActiveRecord: 45.0ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:24:21 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (43.1ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 72ms (Views: 15.6ms | ActiveRecord: 43.5ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:24:21 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (45.6ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.0ms)
+Completed 200 OK in 78ms (Views: 17.3ms | ActiveRecord: 46.1ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:24:22 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (43.4ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (42.3ms)
+Completed 200 OK in 102ms (Views: 45.4ms | ActiveRecord: 43.8ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:24:23 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (44.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 74ms (Views: 15.4ms | ActiveRecord: 44.9ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:24:23 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (45.0ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 74ms (Views: 15.9ms | ActiveRecord: 45.4ms)
+
+
+Started GET "/users?sort=email_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:24:25 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_desc"}
+  [1m[35mUser Load (15.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (45.6ms)
+Completed 200 OK in 77ms (Views: 48.8ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:24:26 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_desc"}
+  [1m[35mUser Load (15.8ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 46ms (Views: 16.5ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/users?sort=email_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:24:27 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_desc"}
+  [1m[35mUser Load (15.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 79ms (Views: 16.4ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:24:27 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_desc"}
+  [1m[35mUser Load (15.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC, name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (44.7ms)
+Completed 200 OK in 76ms (Views: 47.8ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:24:39 +1000
+  Processing by UsersController#index as HTML
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 34ms (Views: 17.0ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:24:58 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (42.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 72ms (Views: 15.9ms | ActiveRecord: 43.2ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:24:59 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[35mUser Load (43.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (43.3ms)
+Completed 200 OK in 103ms (Views: 46.4ms | ActiveRecord: 43.9ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:25:01 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[35mUser Load (45.8ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.9ms)
+Completed 200 OK in 76ms (Views: 16.2ms | ActiveRecord: 46.3ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc" for 127.0.0.1 at 2010-09-10 21:25:02 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc"}
+  [1m[35mUser Load (15.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 44ms (Views: 15.8ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=2" for 127.0.0.1 at 2010-09-10 21:25:04 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"2"}
+  [1m[35mUser Load (17.1ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 15
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (43.2ms)
+Completed 200 OK in 77ms (Views: 46.5ms | ActiveRecord: 17.5ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=3" for 127.0.0.1 at 2010-09-10 21:25:04 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"3"}
+  [1m[35mUser Load (23.9ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 30
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.2ms)
+Completed 200 OK in 55ms (Views: 17.5ms | ActiveRecord: 24.3ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=4" for 127.0.0.1 at 2010-09-10 21:25:05 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"4"}
+  [1m[35mUser Load (24.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 45
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 84ms (Views: 15.9ms | ActiveRecord: 24.6ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=5" for 127.0.0.1 at 2010-09-10 21:25:05 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"5"}
+  [1m[35mUser Load (24.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 60
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (44.2ms)
+Completed 200 OK in 84ms (Views: 47.4ms | ActiveRecord: 24.7ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=6" for 127.0.0.1 at 2010-09-10 21:25:06 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"6"}
+  [1m[35mUser Load (23.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 75
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 53ms (Views: 16.3ms | ActiveRecord: 24.0ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=7" for 127.0.0.1 at 2010-09-10 21:25:06 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"7"}
+  [1m[35mUser Load (25.1ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 90
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 83ms (Views: 16.2ms | ActiveRecord: 25.6ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=8" for 127.0.0.1 at 2010-09-10 21:25:07 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"8"}
+  [1m[35mUser Load (26.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 105
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (43.5ms)
+Completed 200 OK in 86ms (Views: 46.8ms | ActiveRecord: 26.7ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=9" for 127.0.0.1 at 2010-09-10 21:25:07 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"9"}
+  [1m[35mUser Load (27.9ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 120
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 57ms (Views: 16.5ms | ActiveRecord: 28.4ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=10" for 127.0.0.1 at 2010-09-10 21:25:08 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"10"}
+  [1m[35mUser Load (26.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 135
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 86ms (Views: 16.3ms | ActiveRecord: 27.0ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=11" for 127.0.0.1 at 2010-09-10 21:25:08 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"11"}
+  [1m[35mUser Load (24.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 150
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 54ms (Views: 16.8ms | ActiveRecord: 24.7ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=12" for 127.0.0.1 at 2010-09-10 21:25:09 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"12"}
+  [1m[35mUser Load (28.4ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 165
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 58ms (Views: 16.4ms | ActiveRecord: 28.8ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=13" for 127.0.0.1 at 2010-09-10 21:25:09 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"13"}
+  [1m[35mUser Load (26.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 180
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 87ms (Views: 16.8ms | ActiveRecord: 27.0ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=13" for 127.0.0.1 at 2010-09-10 21:25:09 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"13"}
+  [1m[35mUser Load (27.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 180
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 58ms (Views: 17.0ms | ActiveRecord: 27.9ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=14" for 127.0.0.1 at 2010-09-10 21:25:10 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"14"}
+  [1m[35mUser Load (27.1ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 195
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 58ms (Views: 16.5ms | ActiveRecord: 27.5ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=15" for 127.0.0.1 at 2010-09-10 21:25:10 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"15"}
+  [1m[35mUser Load (27.1ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 210
+  [1m[36mSQL (0.7ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.7ms)
+Completed 200 OK in 90ms (Views: 17.8ms | ActiveRecord: 27.8ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=16" for 127.0.0.1 at 2010-09-10 21:25:10 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"16"}
+  [1m[35mUser Load (30.7ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 225
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 61ms (Views: 17.0ms | ActiveRecord: 31.1ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=17" for 127.0.0.1 at 2010-09-10 21:25:11 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"17"}
+  [1m[35mUser Load (27.3ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 240
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 58ms (Views: 16.7ms | ActiveRecord: 27.7ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=18" for 127.0.0.1 at 2010-09-10 21:25:11 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"18"}
+  [1m[35mUser Load (26.7ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 255
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 89ms (Views: 49.0ms | ActiveRecord: 27.1ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=267" for 127.0.0.1 at 2010-09-10 21:25:12 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"267"}
+  [1m[35mUser Load (38.6ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 3990
+Rendered users/index.html.erb within layouts/application (16.4ms)
+Completed 200 OK in 67ms (Views: 19.6ms | ActiveRecord: 38.6ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=266" for 127.0.0.1 at 2010-09-10 21:25:14 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"266"}
+  [1m[36mUser Load (40.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 3975[0m
+  [1m[35mSQL (1.0ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (13.4ms)
+Completed 200 OK in 72ms (Views: 16.7ms | ActiveRecord: 41.4ms)
+
+
+Started GET "/users?sort=email_asc%21name_asc&page=261" for 127.0.0.1 at 2010-09-10 21:25:16 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_asc", "page"=>"261"}
+  [1m[36mUser Load (39.0ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email ASC, name ASC LIMIT 15 OFFSET 3900[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (46.2ms)
+Completed 200 OK in 102ms (Views: 49.4ms | ActiveRecord: 39.9ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc&page=261" for 127.0.0.1 at 2010-09-10 21:25:17 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc", "page"=>"261"}
+  [1m[36mUser Load (38.6ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 3900[0m
+  [1m[35mSQL (0.9ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (13.6ms)
+Completed 200 OK in 69ms (Views: 16.8ms | ActiveRecord: 39.5ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc" for 127.0.0.1 at 2010-09-10 21:26:53 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_asc"}
+  [1m[36mUser Load (15.5ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC, email ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 46ms (Views: 16.4ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=name_desc%21email_asc" for 127.0.0.1 at 2010-09-10 21:26:53 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_asc"}
+  [1m[36mUser Load (15.8ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC, email ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.8ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 78ms (Views: 16.3ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:27:27 +1000
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (1.7ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 33ms (Views: 14.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:27:29 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[36mUser Load (44.3ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (12.2ms)
+Completed 200 OK in 73ms (Views: 15.4ms | ActiveRecord: 44.7ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:27:30 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[36mUser Load (46.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 80ms (Views: 18.9ms | ActiveRecord: 46.7ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:27:30 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[36mUser Load (44.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (46.2ms)
+Completed 200 OK in 106ms (Views: 49.3ms | ActiveRecord: 44.6ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:27:30 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[36mUser Load (43.6ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 73ms (Views: 17.0ms | ActiveRecord: 44.0ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:27:31 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[36mUser Load (83.7ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (25.8ms)
+Completed 200 OK in 132ms (Views: 29.2ms | ActiveRecord: 84.2ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:27:37 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[36mUser Load (45.5ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (20.4ms)
+Completed 200 OK in 82ms (Views: 23.6ms | ActiveRecord: 45.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:29:06 +1000
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (1.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (12.5ms)
+Completed 200 OK in 31ms (Views: 15.8ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:29:11 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[36mUser Load (42.9ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.7ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.1ms)
+Completed 200 OK in 103ms (Views: 13.1ms | ActiveRecord: 43.6ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:29:17 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[36mUser Load (43.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.0ms)
+Completed 200 OK in 69ms (Views: 12.8ms | ActiveRecord: 43.6ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:29:49 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[36mUser Load (44.6ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (12.5ms)
+Completed 200 OK in 73ms (Views: 14.5ms | ActiveRecord: 45.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:30:15 +1000
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (1.2ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (46.2ms)
+Completed 200 OK in 65ms (Views: 49.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:30:16 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[36mUser Load (44.1ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.4ms)
+Completed 200 OK in 71ms (Views: 13.2ms | ActiveRecord: 44.5ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:30:18 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[36mUser Load (43.3ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.0ms)
+Completed 200 OK in 71ms (Views: 13.8ms | ActiveRecord: 43.8ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:30:19 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[36mUser Load (45.0ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (43.2ms)
+Completed 200 OK in 103ms (Views: 45.1ms | ActiveRecord: 45.4ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:30:20 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[36mUser Load (43.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (10.7ms)
+Completed 200 OK in 70ms (Views: 12.4ms | ActiveRecord: 43.8ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:30:20 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[36mUser Load (44.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (12.0ms)
+Completed 200 OK in 104ms (Views: 13.9ms | ActiveRecord: 44.6ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:30:31 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[36mUser Load (43.3ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (12.0ms)
+Completed 200 OK in 72ms (Views: 14.0ms | ActiveRecord: 43.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:32:31 +1000
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (2.9ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (23.8ms)
+Completed 200 OK in 67ms (Views: 32.5ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users?sort=name_asc" for 127.0.0.1 at 2010-09-10 21:32:33 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc"}
+  [1m[36mUser Load (43.5ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.3ms)
+Completed 200 OK in 102ms (Views: 13.1ms | ActiveRecord: 44.0ms)
+
+
+Started GET "/users?sort=name_desc" for 127.0.0.1 at 2010-09-10 21:32:34 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc"}
+  [1m[36mUser Load (43.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.2ms)
+Completed 200 OK in 69ms (Views: 12.9ms | ActiveRecord: 43.8ms)
+
+
+Started GET "/users?sort=email_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:32:35 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_desc"}
+  [1m[36mUser Load (16.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email ASC, name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (12.8ms)
+Completed 200 OK in 45ms (Views: 14.8ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/users?sort=email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:32:36 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_desc"}
+  [1m[36mUser Load (15.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email DESC, name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (45.1ms)
+Completed 200 OK in 76ms (Views: 46.8ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=email_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:32:36 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_desc"}
+  [1m[36mUser Load (16.8ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email ASC, name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (12.0ms)
+Completed 200 OK in 44ms (Views: 13.9ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/users?sort=email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:32:37 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_desc"}
+  [1m[36mUser Load (15.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email DESC, name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.5ms)
+Completed 200 OK in 42ms (Views: 13.2ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users?sort=email_asc%21name_desc" for 127.0.0.1 at 2010-09-10 21:32:37 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc!name_desc"}
+  [1m[36mUser Load (15.6ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email ASC, name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (42.8ms)
+Completed 200 OK in 73ms (Views: 44.6ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=email_desc%21name_desc" for 127.0.0.1 at 2010-09-10 21:32:38 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_desc"}
+  [1m[36mUser Load (36.8ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email DESC, name DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.5ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (21.4ms)
+Completed 200 OK in 87ms (Views: 23.3ms | ActiveRecord: 37.3ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:32:39 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[36mUser Load (15.3ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.7ms)
+Completed 200 OK in 75ms (Views: 13.4ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:32:40 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[36mUser Load (15.3ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.5ms)
+Completed 200 OK in 41ms (Views: 13.2ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:32:41 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[36mUser Load (15.8ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.3ms)
+Completed 200 OK in 42ms (Views: 13.2ms | ActiveRecord: 16.2ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:32:41 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[36mUser Load (16.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (43.8ms)
+Completed 200 OK in 76ms (Views: 45.6ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:32:42 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[36mUser Load (15.9ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.0ms)
+Completed 200 OK in 42ms (Views: 12.7ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:32:42 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[36mUser Load (15.5ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.5ms)
+Completed 200 OK in 75ms (Views: 13.3ms | ActiveRecord: 15.9ms)
+
+
+Started GET "/users?sort=email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:33:11 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc!name_asc"}
+  [1m[36mUser Load (15.6ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY email DESC, name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (44.8ms)
+Completed 200 OK in 75ms (Views: 46.6ms | ActiveRecord: 16.0ms)
+
+
+Started GET "/users?sort=phone_asc%21email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:33:12 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!email_desc!name_asc"}
+  [1m[36mUser Load (16.1ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY phone ASC, email DESC, name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.1ms)
+Completed 200 OK in 43ms (Views: 12.8ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/users?sort=phone_desc%21email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:33:12 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!email_desc!name_asc"}
+  [1m[36mUser Load (15.6ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY phone DESC, email DESC, name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.6ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.7ms)
+Completed 200 OK in 75ms (Views: 13.6ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/users?sort=phone_asc%21email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:33:13 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!email_desc!name_asc"}
+  [1m[36mUser Load (16.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY phone ASC, email DESC, name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.6ms)
+Completed 200 OK in 43ms (Views: 13.3ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/users?sort=phone_desc%21email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:33:13 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!email_desc!name_asc"}
+  [1m[36mUser Load (16.0ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY phone DESC, email DESC, name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.6ms)
+Completed 200 OK in 44ms (Views: 13.4ms | ActiveRecord: 16.4ms)
+
+
+Started GET "/users?sort=phone_asc%21email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:33:14 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!email_desc!name_asc"}
+  [1m[36mUser Load (15.9ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY phone ASC, email DESC, name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (43.7ms)
+Completed 200 OK in 74ms (Views: 45.5ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/users?sort=phone_desc%21email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:33:14 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!email_desc!name_asc"}
+  [1m[36mUser Load (16.1ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY phone DESC, email DESC, name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.4ms)
+Completed 200 OK in 42ms (Views: 13.1ms | ActiveRecord: 16.6ms)
+
+
+Started GET "/users?sort=created_at_asc%21phone_desc%21email_desc%21name_asc" for 127.0.0.1 at 2010-09-10 21:33:15 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"created_at_asc!phone_desc!email_desc!name_asc"}
+  [1m[36mUser Load (18.4ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY created_at ASC, phone DESC, email DESC, name ASC LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (0.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb (11.7ms)
+Completed 200 OK in 48ms (Views: 13.5ms | ActiveRecord: 18.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:33:17 +1000
+  Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT "users".* FROM "users" LIMIT 15 OFFSET 0[0m
+  [1m[35mSQL (1.4ms)[0m  SELECT COUNT(*) AS count_id FROM "users"
+Rendered users/index.html.erb within layouts/application (46.7ms)
+Completed 200 OK in 66ms (Views: 49.9ms | ActiveRecord: 2.2ms)
+^C[2010-09-10 21:48:59] INFO  going to shutdown ...
+[2010-09-10 21:48:59] INFO  WEBrick::HTTPServer#start done.
+Exiting
+]0;rufus@rufus-laptop: ~/Projects/rails/sorterrufus@rufus-laptop:~/Projects/rails/sorter$ rails server
+=> Booting WEBrick
+=> Rails 3.0.0 application starting in development on http://0.0.0.0:3000
+=> Call with -d to detach
+=> Ctrl-C to shutdown server
+You did not specify how you would like Rails to report deprecation notices for your development environment, please set config.active_support.deprecation to :log at config/environments/development.rb
+[2010-09-10 21:49:05] INFO  WEBrick 1.3.1
+[2010-09-10 21:49:05] INFO  ruby 1.9.2 (2010-08-18) [x86_64-linux]
+[2010-09-10 21:49:05] INFO  WEBrick::HTTPServer#start: pid=17203 port=3000
+
+
+Started GET "/" for 127.0.0.1 at 2010-09-10 21:49:07 +1000
+  Processing by UsersController#index as HTML
+  [1m[36mSQL (0.5ms)[0m  [1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" LIMIT 15 OFFSET 0
+  [1m[36mSQL (1.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb within layouts/application (17.6ms)
+Completed 200 OK in 38ms (Views: 20.8ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users?sort=email_asc" for 127.0.0.1 at 2010-09-10 21:49:10 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_asc"}
+  [1m[35mUser Load (24.2ms)[0m  SELECT "users".* FROM "users" ORDER BY email ASC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (11.0ms)
+Completed 200 OK in 51ms (Views: 12.9ms | ActiveRecord: 24.6ms)
+
+
+Started GET "/users?sort=email_desc" for 127.0.0.1 at 2010-09-10 21:49:10 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"email_desc"}
+  [1m[35mUser Load (41.5ms)[0m  SELECT "users".* FROM "users" ORDER BY email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (12.8ms)
+Completed 200 OK in 102ms (Views: 14.6ms | ActiveRecord: 42.0ms)
+
+
+Started GET "/users?sort=name_asc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:16 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_asc!email_desc"}
+  [1m[35mUser Load (15.9ms)[0m  SELECT "users".* FROM "users" ORDER BY name ASC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (11.8ms)
+Completed 200 OK in 43ms (Views: 13.6ms | ActiveRecord: 16.3ms)
+
+
+Started GET "/users?sort=name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:20 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"name_desc!email_desc"}
+  [1m[35mUser Load (16.5ms)[0m  SELECT "users".* FROM "users" ORDER BY name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (12.4ms)
+Completed 200 OK in 45ms (Views: 14.5ms | ActiveRecord: 16.9ms)
+
+
+Started GET "/users?sort=phone_asc%21name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:27 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!name_desc!email_desc"}
+  [1m[35mUser Load (16.8ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (45.6ms)
+Completed 200 OK in 78ms (Views: 47.5ms | ActiveRecord: 17.2ms)
+
+
+Started GET "/users?sort=phone_desc%21name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:28 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!name_desc!email_desc"}
+  [1m[35mUser Load (17.4ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (11.7ms)
+Completed 200 OK in 44ms (Views: 13.5ms | ActiveRecord: 17.8ms)
+
+
+Started GET "/users?sort=phone_asc%21name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:28 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!name_desc!email_desc"}
+  [1m[35mUser Load (17.5ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (12.3ms)
+Completed 200 OK in 78ms (Views: 14.1ms | ActiveRecord: 17.9ms)
+
+
+Started GET "/users?sort=phone_desc%21name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:28 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!name_desc!email_desc"}
+  [1m[35mUser Load (16.4ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (12.1ms)
+Completed 200 OK in 44ms (Views: 13.9ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/users?sort=phone_asc%21name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:29 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_asc!name_desc!email_desc"}
+  [1m[35mUser Load (17.9ms)[0m  SELECT "users".* FROM "users" ORDER BY phone ASC, name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (12.0ms)
+Completed 200 OK in 47ms (Views: 13.8ms | ActiveRecord: 18.3ms)
+
+
+Started GET "/users?sort=phone_desc%21name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:29 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"phone_desc!name_desc!email_desc"}
+  [1m[35mUser Load (16.3ms)[0m  SELECT "users".* FROM "users" ORDER BY phone DESC, name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (46.3ms)
+Completed 200 OK in 78ms (Views: 48.0ms | ActiveRecord: 16.7ms)
+
+
+Started GET "/users?sort=created_at_asc%21phone_desc%21name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:30 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"created_at_asc!phone_desc!name_desc!email_desc"}
+  [1m[35mUser Load (16.8ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at ASC, phone DESC, name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.5ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (11.3ms)
+Completed 200 OK in 43ms (Views: 13.1ms | ActiveRecord: 17.3ms)
+
+
+Started GET "/users?sort=created_at_desc%21phone_desc%21name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:31 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"created_at_desc!phone_desc!name_desc!email_desc"}
+  [1m[35mUser Load (43.3ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at DESC, phone DESC, name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (11.9ms)
+Completed 200 OK in 71ms (Views: 13.6ms | ActiveRecord: 43.7ms)
+
+
+Started GET "/users?sort=created_at_asc%21phone_desc%21name_desc%21email_desc" for 127.0.0.1 at 2010-09-10 21:49:31 +1000
+  Processing by UsersController#index as HTML
+  Parameters: {"sort"=>"created_at_asc!phone_desc!name_desc!email_desc"}
+  [1m[35mUser Load (17.5ms)[0m  SELECT "users".* FROM "users" ORDER BY created_at ASC, phone DESC, name DESC, email DESC LIMIT 15 OFFSET 0
+  [1m[36mSQL (0.4ms)[0m  [1mSELECT COUNT(*) AS count_id FROM "users"[0m
+Rendered users/index.html.erb (45.1ms)
+Completed 200 OK in 78ms (Views: 47.1ms | ActiveRecord: 17.9ms)
+^C[2010-09-10 21:49:35] INFO  going to shutdown ...
+[2010-09-10 21:49:35] INFO  WEBrick::HTTPServer#start done.
+Exiting
+]0;rufus@rufus-laptop: ~/Projects/rails/sorterrufus@rufus-laptop:~/Projects/rails/sorter$ rails serverconsole[1Pservere[C[C[C[C[C[C[Cs[C[C[C[C[C[C[Cconsole[1Pserverconsole[1Pserver[K]0;rufus@rufus-laptop: ~/Projects/rails/sorterrufus@rufus-laptop:~/Projects/rails/sorter$ rails server[K[K[K[K[K[K[K[K[K[K[K[Kexit
+exit
+
+Script done on Fri 10 Sep 2010 22:33:52 EST

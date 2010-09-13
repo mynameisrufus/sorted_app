@@ -1,0 +1,33 @@
+<table>
+  <thead>
+    <tr>
+      <th class="ui-state-default" colspan="2">
+        <%= link_to_sorted 'name and email', "name DESC, email DESC" %>
+      </th>
+      <th class="ui-state-default" colspan="2">
+        <%= link_to_sorted 'phone and created at', "phone DESC, created_at DESC" %>
+      </th>
+    </tr>
+    <tr>
+      <th class="ui-state-default"><%= link_to_sorted 'name', :name %></th>
+      <th class="ui-state-default"><%= link_to_sorted 'email', :email %></th>
+      <th class="ui-state-default"><%= link_to_sorted 'phone', :phone %></th>
+      <th class="ui-state-default"><%= link_to_sorted 'created', :created_at %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>  
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.created_at.strftime("%d/%m/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4"><%= will_paginate @users %></td>
+    <tr>
+  </tfoot>
+</table>

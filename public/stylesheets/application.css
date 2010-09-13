@@ -1,0 +1,37 @@
+body {
+  font-family:"Trebuchet MS","Helvetica","Arial","Verdana","sans-serif";
+  background-color:#3D3644;
+  color: #FFF;
+}
+
+table th span {
+  float: left;
+}
+
+table {
+  margin: 0 auto;
+  width: 980px
+}
+
+table th {
+  width: 25%;
+  padding: 20px 5px;
+}
+
+table td {
+  font-size: 12px;
+  padding: 5px 0px;
+}
+
+table th a {
+  width: 100px;
+}
+
+table tfoot .pagination {
+  font-size: 15px;
+  text-align: center;
+}
+
+table tfoot .pagination a {
+  color: #FFF;
+}
