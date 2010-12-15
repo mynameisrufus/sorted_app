@@ -1,9 +1,0 @@
-== Example Sorted Application
-
-  git clone git://github.com/mynameisrufus/sorted_app.git
-  cd sorted_app
-  bundle install
-  rake db:migrate
-  rails server
-
-Click about!

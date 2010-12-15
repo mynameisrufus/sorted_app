@@ -18,6 +18,14 @@ table th {
   padding: 20px 5px;
 }
 
+table tr.odd {
+  background-color:#564963;
+}
+
+table tr.even {
+
+}
+
 table td {
   font-size: 12px;
   padding: 5px 0px;
