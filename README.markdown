@@ -9,8 +9,9 @@ You need sqlite3 for this app.
 
 #### Mac OSX
 
-    brew ?
+    brew install sqlite
 
+#### Then
 
     git clone git://github.com/mynameisrufus/sorted_app.git
     cd sorted_app
@@ -18,5 +19,3 @@ You need sqlite3 for this app.
     rake db:migrate
     rake db:seed
     rails server
-
-Click about!
