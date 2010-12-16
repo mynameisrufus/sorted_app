@@ -9,7 +9,7 @@ module UsersHelper
                 when "sorted"
                   "ui-icon ui-icon-carat-2-n-s"
                 end
-    link_to(content_tag(:span, nil, {:class => css_class}) + name, sorter.params)
+    link_to(content_tag(:span, nil, {:class => css_class}) + name.to_s, sorter.params)
   end
 
   def odd_even
