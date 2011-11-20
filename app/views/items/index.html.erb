@@ -1,0 +1,25 @@
+<table>
+  <thead>
+    <tr>
+      <th class="ui-state-default"><%= link_to_sorted 'name', 'items.name' %></th>
+      <th class="ui-state-default"><%= link_to_sorted 'value', 'items.value' %></th>
+      <th class="ui-state-default"><%= link_to_sorted 'user', 'users.name' %></th>
+      <th class="ui-state-default"><%= link_to_sorted 'created', 'items.created_at' %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>  
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td><%= item.name %></td>
+        <td><%= item.value %></td>
+        <td><%= item.user.name %></td>
+        <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="4"><%= paginate @items %></td>
+    <tr>
+  </tfoot>
+</table>
