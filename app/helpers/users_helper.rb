@@ -1,7 +1,7 @@
 module UsersHelper
   def link_to_sorted(name, order)
-    sorter = sorted(order)
-    css_class = case sorter.to_css
+    sorter    = ActionView::Base::SortedViewHelper.new(order, ((request.get? && !params.nil?) ? params.dup : nil))
+    css_class = case sorter.css
                 when "sorted asc"
                   "ui-icon ui-icon-triangle-1-n"
                 when "sorted desc"
@@ -10,11 +10,5 @@ module UsersHelper
                   "ui-icon ui-icon-carat-2-n-s"
                 end
     link_to(content_tag(:span, nil, {:class => css_class}) + name.to_s, sorter.params)
-  end
-
-  def odd_even
-    @odd_even ||= 0
-    @odd_even += 1
-    (@odd_even % 2) == 1 ? 'odd' : 'even'
   end
 end

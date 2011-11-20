@@ -17,7 +17,7 @@
   </thead>
   <tbody>
     <% @users.each do |user| %>  
-      <tr class="<%= odd_even %>">
+      <tr class="<%= cycle 'odd', 'even' %>">
         <td><%= user.name %></td>
         <td><%= user.email %></td>
         <td><%= user.phone %></td>
@@ -27,7 +27,7 @@
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="4"><%= will_paginate @users %></td>
+      <td colspan="4"><%= paginate @users %></td>
     <tr>
   </tfoot>
 </table>
