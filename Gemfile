@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0'
+gem "rails",    "4.0.0"
 
-gem 'sqlite3'
-gem 'kaminari', '~> 0.13'
-gem 'sorted', '0.4.1'
-gem 'ffaker'
+gem "sqlite3",  "~> 1.3.8"
+gem "kaminari", "~> 0.14"
+gem "sorted",   "~> 1.0.0"
+gem "ffaker"

@@ -13,6 +13,6 @@ var ajaxTheTable = function() {
         $('body').html(data);
         ajaxTheTable();
       }
-    });    
+    });
   });
 }
