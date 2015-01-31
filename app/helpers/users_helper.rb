@@ -1,6 +1,8 @@
+require 'sorted/actionview/builder'
+
 module UsersHelper
   def link_to_sorted(name, order)
-    sorter    = ActionView::Base::SortedViewHelper.new(order, ((request.get? && !params.nil?) ? params.dup : nil))
+    sorter    = ::Sorted::ActionView::Builder.new(order, ((request.get? && !params.nil?) ? params.dup : nil))
     css_class = case sorter.css
                 when "sorted asc"
                   "ui-icon ui-icon-triangle-1-n"
