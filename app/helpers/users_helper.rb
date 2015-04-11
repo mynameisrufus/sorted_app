@@ -1,5 +1,3 @@
-require 'sorted/actionview/builder'
-
 module UsersHelper
   def link_to_sorted(name, order)
     sorter    = ::Sorted::ActionView::Builder.new(order, ((request.get? && !params.nil?) ? params.dup : nil))

@@ -60,9 +60,9 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.1.0)
     sorted (2.0.2)
-    sorted-actionview (0.0.1)
+    sorted-actionview (0.0.2)
       sorted (~> 2.0.0)
-    sorted-activerecord (0.1.1)
+    sorted-activerecord (0.1.2)
       activerecord (>= 4.0.0)
       activesupport
       sorted (~> 2.0.2)
@@ -92,6 +92,6 @@ DEPENDENCIES
   ffaker
   kaminari (~> 0.14)
   rails (= 4.0.0)
-  sorted-actionview (~> 0.0.1)
-  sorted-activerecord (~> 0.1.1)
+  sorted-actionview (~> 0.0.2)
+  sorted-activerecord (~> 0.1.2)
   sqlite3 (~> 1.3.8)
